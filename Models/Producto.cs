@@ -17,7 +17,7 @@ namespace eCommerce.Models
         public string Descripcion { get; set; }
         public double Precio { get; set; }
         public int Stock { get; set; }
-
+        /*
         public Producto(int id, string nombre, string descripcion, double precio, int stock)
         {
             Id = id;
@@ -25,6 +25,6 @@ namespace eCommerce.Models
             Descripcion = descripcion;
             Precio = precio;
             Stock = stock;
-        }
+        }*/
     }
 }
