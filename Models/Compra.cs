@@ -1,19 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace eCommerce.Models
 {
-    internal class Compra
-
+    public class Compra
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public Usuario Usuario { get; set; }
-        public List<Producto> Productos { get; set; }
-        public string FechaCompra { get; set; }
+        public Producto Producto { get; set; }
+        public DateTime FechaCompra { get; set; }
 
+        /*
         public Compra(int id, Usuario usuario, List<Producto> productos, string fechaCompra)
         {
             Id = id;
@@ -21,6 +25,7 @@ namespace eCommerce.Models
             Productos = productos;
             FechaCompra = fechaCompra;
         }
+        */
         
     }
 }
