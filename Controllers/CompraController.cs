@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using eCommerce.Context;
 using eCommerce.Models;
+using eCommerce.Context;
 
 namespace eCommerce.Controllers
 {
@@ -22,7 +22,8 @@ namespace eCommerce.Controllers
         // GET: Compra
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Compras.ToListAsync());
+            var eCommerceDatabaseContext = _context.Compras.Include(c => c.Producto).Include(c => c.Usuario);
+            return View(await eCommerceDatabaseContext.ToListAsync());
         }
 
         // GET: Compra/Details/5
@@ -34,6 +35,8 @@ namespace eCommerce.Controllers
             }
 
             var compra = await _context.Compras
+                .Include(c => c.Producto)
+                .Include(c => c.Usuario)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (compra == null)
             {
@@ -46,6 +49,8 @@ namespace eCommerce.Controllers
         // GET: Compra/Create
         public IActionResult Create()
         {
+            ViewData["ProductoId"] = new SelectList(_context.Productos, "Id", "Id");
+            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Id");
             return View();
         }
 
@@ -54,7 +59,7 @@ namespace eCommerce.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FechaCompra")] Compra compra)
+        public async Task<IActionResult> Create([Bind("Id,UsuarioId,ProductoId,FechaCompra")] Compra compra)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +67,8 @@ namespace eCommerce.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["ProductoId"] = new SelectList(_context.Productos, "Id", "Id", compra.ProductoId);
+            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Id", compra.UsuarioId);
             return View(compra);
         }
 
@@ -78,6 +85,8 @@ namespace eCommerce.Controllers
             {
                 return NotFound();
             }
+            ViewData["ProductoId"] = new SelectList(_context.Productos, "Id", "Id", compra.ProductoId);
+            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Id", compra.UsuarioId);
             return View(compra);
         }
 
@@ -86,7 +95,7 @@ namespace eCommerce.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FechaCompra")] Compra compra)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,UsuarioId,ProductoId,FechaCompra")] Compra compra)
         {
             if (id != compra.Id)
             {
@@ -113,6 +122,8 @@ namespace eCommerce.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["ProductoId"] = new SelectList(_context.Productos, "Id", "Id", compra.ProductoId);
+            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Id", compra.UsuarioId);
             return View(compra);
         }
 
@@ -125,6 +136,8 @@ namespace eCommerce.Controllers
             }
 
             var compra = await _context.Compras
+                .Include(c => c.Producto)
+                .Include(c => c.Usuario)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (compra == null)
             {
