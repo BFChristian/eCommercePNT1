@@ -13,9 +13,21 @@ namespace eCommerce.Models
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Required]
         public int Id { get; set; }
+
+        [Required(ErrorMessage = "El nombre es obligatorio.")]
+        [StringLength(50, ErrorMessage = "El nombre no puede exceder los 50 caracteres.")]
         public string Nombre { get; set; }
+
+
+        [Required(ErrorMessage = "El apellido es obligatorio.")]
+        [StringLength(50, ErrorMessage = "El apellido no puede exceder los 50 caracteres.")]
         public string Apellido { get; set; }
+
+
+        [Required(ErrorMessage = "El correo electrónico es obligatorio.")]
+        [EmailAddress(ErrorMessage = "Ingrese un correo electrónico válido.")]
         public string Correo { get; set; }
 
         /*
