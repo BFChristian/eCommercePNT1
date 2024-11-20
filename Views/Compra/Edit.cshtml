@@ -17,31 +17,26 @@
             <form asp-action="Edit">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-                <!-- Campo oculto para el Id -->
                 <input type="hidden" asp-for="Id" />
 
-                <!-- Campo de selección para UsuarioId -->
                 <div class="form-group mb-3">
                     <label asp-for="UsuarioId" class="control-label">Usuario</label>
                     <select asp-for="UsuarioId" class="form-control" asp-items="ViewBag.UsuarioId"></select>
                     <span asp-validation-for="UsuarioId" class="text-danger"></span>
                 </div>
 
-                <!-- Campo de selección para ProductoId -->
                 <div class="form-group mb-3">
                     <label asp-for="ProductoId" class="control-label">Producto</label>
                     <select asp-for="ProductoId" class="form-control" asp-items="ViewBag.ProductoId"></select>
                     <span asp-validation-for="ProductoId" class="text-danger"></span>
                 </div>
 
-                <!-- Campo de fecha de compra -->
                 <div class="form-group mb-3">
                     <label asp-for="FechaCompra" class="control-label">Fecha de Compra</label>
                     <input asp-for="FechaCompra" class="form-control" />
                     <span asp-validation-for="FechaCompra" class="text-danger"></span>
                 </div>
 
-                <!-- Botón de guardar -->
                 <div class="form-group text-end">
                     <input type="submit" value="Guardar" class="btn btn-primary" />
                 </div>
