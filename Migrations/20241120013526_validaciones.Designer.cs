@@ -12,8 +12,8 @@ using eCommerce.Context;
 namespace eCommerce.Migrations
 {
     [DbContext(typeof(eCommerceDatabaseContext))]
-    [Migration("20241114000258_inicial")]
-    partial class inicial
+    [Migration("20241120013526_validaciones")]
+    partial class validaciones
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -61,11 +61,13 @@ namespace eCommerce.Migrations
 
                     b.Property<string>("Descripcion")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<double>("Precio")
                         .HasColumnType("float");
@@ -88,7 +90,8 @@ namespace eCommerce.Migrations
 
                     b.Property<string>("Apellido")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Correo")
                         .IsRequired()
@@ -96,7 +99,8 @@ namespace eCommerce.Migrations
 
                     b.Property<string>("Nombre")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 

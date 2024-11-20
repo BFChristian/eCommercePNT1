@@ -15,12 +15,12 @@ namespace eCommerce.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "El nombre del producto es obligatorio.")]
-        [StringLength(100, ErrorMessage = "El nombre no puede exceder los 100 caracteres.")]
+        [StringLength(30, ErrorMessage = "El nombre no puede exceder los 30 caracteres.")]
         public string Nombre { get; set; }
 
 
         [Required(ErrorMessage = "La descripción es obligatoria.")]
-        [StringLength(500, ErrorMessage = "La descripción no puede exceder los 500 caracteres.")]
+        [StringLength(30, ErrorMessage = "La descripción no puede exceder los 30 caracteres.")]
         public string Descripcion { get; set; }
 
 
@@ -30,7 +30,7 @@ namespace eCommerce.Models
 
 
         [Required(ErrorMessage = "El stock es obligatorio.")]
-        [Range(0, int.MaxValue, ErrorMessage = "El stock no puede ser negativo.")]
+        [Range(0, 10000, ErrorMessage = "El stock no puede ser negativo y tampoco ser mayor a 10,000")]
         public int Stock { get; set; }
         /*
         public Producto(int id, string nombre, string descripcion, double precio, int stock)
