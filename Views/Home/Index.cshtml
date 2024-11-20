@@ -1,15 +1,15 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Página de Inicio";
 }
 
 <style>
     /* General page styling */
     body {
         font-family: 'Arial', sans-serif;
-        background-color: #f4f7fa;
-        color: #333;
         margin: 0;
         padding: 0;
+        background: linear-gradient(to bottom, #6a11cb, #2575fc); /* Gradient background */
+        color: #fff;
     }
 
     .text-center {
@@ -19,13 +19,42 @@
 
     h1 {
         font-size: 3em;
-        color: #4CAF50; /* Green color */
+        color: #ffeb3b; /* Bright yellow for contrast */
         margin-bottom: 20px;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     }
 
     p {
         font-size: 1.2em;
-        color: #555;
+        color: #f4f7fa; /* Light gray for readability */
+        line-height: 1.6;
+        max-width: 600px;
+        margin: 0 auto;
     }
 
+    /* Styling a call-to-action button */
+    .btn {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 1em;
+        color: #fff;
+        background-color: #4CAF50; /* Green */
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        transition: background-color 0.3s ease;
+    }
+
+        .btn:hover {
+            background-color: #45a049; /* Darker green */
+        }
 </style>
+
+<div class="text-center">
+    <h1>¡Bienvenido!</h1>
+    <p>Aquí podrás gestionar tu propio ecommerce. Organiza tus productos, administra tus ventas y haz crecer tu negocio con facilidad.</p>
+    <a href="#features" class="btn">Comenzar</a>
+</div>
