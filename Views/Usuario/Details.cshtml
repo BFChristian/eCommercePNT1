@@ -1,36 +1,32 @@
 ﻿@model eCommerce.Models.Usuario
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalles del Usuario";
 }
 
-<h1>Details</h1>
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h1 class="h4 mb-0">Detalles del Usuario</h1>
+        </div>
+        <div class="card-body">
+            <h4 class="text-secondary">Información Personal</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-3 fw-bold">Nombre</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Nombre)</dd>
 
-<div>
-    <h4>Usuario</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Apellido)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Apellido)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Correo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Correo)
-        </dd>
-    </dl>
+                <dt class="col-sm-3 fw-bold">Apellido</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Apellido)</dd>
+
+                <dt class="col-sm-3 fw-bold">Correo</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Correo)</dd>
+            </dl>
+            <div class="d-flex justify-content-start mt-4">
+                <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning me-2">Editar</a>
+                <a asp-action="Index" class="btn btn-secondary">Volver a la Lista</a>
+            </div>
+        </div>
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
