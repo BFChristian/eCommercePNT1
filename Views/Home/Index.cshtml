@@ -3,58 +3,54 @@
 }
 
 <style>
-    /* General page styling */
     body {
         font-family: 'Arial', sans-serif;
         margin: 0;
         padding: 0;
-        background: linear-gradient(to bottom, #6a11cb, #2575fc); /* Gradient background */
-        color: #fff;
+        background-color: #f4f7fa; /* Fondo gris claro */
+        color: #333;
     }
 
-    .text-center {
+    .features {
+        display: flex;
+        justify-content: space-around;
         text-align: center;
-        padding-top: 50px;
+        padding: 50px 20px;
     }
 
-    h1 {
-        font-size: 3em;
-        color: #ffeb3b; /* Bright yellow for contrast */
-        margin-bottom: 20px;
-        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    .feature {
+        flex: 1;
+        margin: 0 10px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
-    p {
-        font-size: 1.2em;
-        color: #f4f7fa; /* Light gray for readability */
-        line-height: 1.6;
-        max-width: 600px;
-        margin: 0 auto;
-    }
+        .feature h2 {
+            color: #4CAF50; /* Verde */
+            margin-bottom: 10px;
+        }
 
-    /* Styling a call-to-action button */
-    .btn {
-        display: inline-block;
-        margin-top: 20px;
-        padding: 10px 20px;
-        font-size: 1em;
-        color: #fff;
-        background-color: #4CAF50; /* Green */
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        text-decoration: none;
-        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-        transition: background-color 0.3s ease;
-    }
-
-        .btn:hover {
-            background-color: #45a049; /* Darker green */
+        .feature p {
+            font-size: 1em;
+            color: #555;
+            line-height: 1.6;
         }
 </style>
 
-<div class="text-center">
-    <h1>¡Bienvenido!</h1>
-    <p>Aquí podrás gestionar tu propio ecommerce. Organiza tus productos, administra tus ventas y haz crecer tu negocio con facilidad.</p>
-    <a href="#features" class="btn">Comenzar</a>
+<div class="features">
+    <div class="feature">
+        <h2>Gestión de Productos</h2>
+        <p>Administra tu catálogo, actualiza precios y mantén todo organizado.</p>
+    </div>
+    <div class="feature">
+        <h2>Gestión de Usuarios</h2>
+        <p>Controla a tus clientes y administra sus datos de manera segura.</p>
+    </div>
+    <div class="feature">
+        <h2>Gestión de Compras</h2>
+        <p>Consulta y organiza las compras realizadas en tu tienda.</p>
+    </div>
 </div>
+
