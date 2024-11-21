@@ -58,6 +58,18 @@ namespace eCommerce.Controllers
         {
             if (ModelState.IsValid)
             {
+                //validar que el nuevo usuario no tenga un mail existente
+                /*
+                List<Usuario> usuarios = await _context.Usuarios.ToListAsync();
+                foreach (var item in usuarios)
+                {
+                    if (!item.Correo.Equals(usuario.Correo))
+                    {
+                        _context.Add(usuario);
+                        await _context.SaveChangesAsync();
+                    }
+                }
+                */
                 _context.Add(usuario);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

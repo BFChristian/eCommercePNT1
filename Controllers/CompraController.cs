@@ -49,8 +49,8 @@ namespace eCommerce.Controllers
         // GET: Compra/Create
         public IActionResult Create()
         {
-            ViewData["ProductoId"] = new SelectList(_context.Productos, "Id", "Id");
-            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Id");
+            ViewData["ProductoId"] = new SelectList(_context.Productos, "Id", "Nombre");
+            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "ApellidoNom");
             return View();
         }
 
@@ -67,8 +67,8 @@ namespace eCommerce.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProductoId"] = new SelectList(_context.Productos, "Id", "Id", compra.ProductoId);
-            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Id", compra.UsuarioId);
+            ViewData["ProductoId"] = new SelectList(_context.Productos, "Id", "Nombre", compra.ProductoId);
+            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "ApellidoNom", compra.UsuarioId);
             return View(compra);
         }
 
@@ -85,8 +85,8 @@ namespace eCommerce.Controllers
             {
                 return NotFound();
             }
-            ViewData["ProductoId"] = new SelectList(_context.Productos, "Id", "Id", compra.ProductoId);
-            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Id", compra.UsuarioId);
+            ViewData["ProductoId"] = new SelectList(_context.Productos, "Id", "Nombre", compra.ProductoId);
+            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "ApellidoNom", compra.UsuarioId);
             return View(compra);
         }
 
@@ -122,8 +122,8 @@ namespace eCommerce.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProductoId"] = new SelectList(_context.Productos, "Id", "Id", compra.ProductoId);
-            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Id", compra.UsuarioId);
+            ViewData["ProductoId"] = new SelectList(_context.Productos, "Id", "Nombre", compra.ProductoId);
+            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "ApellidoNom", compra.UsuarioId);
             return View(compra);
         }
 

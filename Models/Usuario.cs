@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace eCommerce.Models
 {
@@ -32,6 +33,13 @@ namespace eCommerce.Models
         [EmailAddress(ErrorMessage = "Ingrese un correo electrónico válido.")]
         public string Correo { get; set; }
 
+        public string ApellidoNom
+        {
+            get
+            {
+                return Nombre+" "+Apellido;
+            }
+        }
         /*
         public Usuario(int id, string nombre, Carrito carrito, List<Compra> compras)
         {
