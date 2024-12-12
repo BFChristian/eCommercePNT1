@@ -56,24 +56,24 @@ namespace eCommerce.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nombre,Apellido,Correo")] Usuario usuario)
         {
-            // Verificar si el correo ya existe en la base de datos
+            // Verifica si el correo ya existe en la base de datos
             bool correoExiste = await _context.Usuarios.AnyAsync(u => u.Correo == usuario.Correo);
 
             if (correoExiste)
             {
                 // Agregar un mensaje de error al modelo
                 ModelState.AddModelError("Correo", "El correo ingresado ya está registrado.");
-                return View(usuario); // Regresar a la vista con el error
+                return View(usuario); // Regresa a la vista con el error
             }
 
             if (ModelState.IsValid)
             {
                 _context.Add(usuario); // Agregar el nuevo usuario
                 await _context.SaveChangesAsync(); // Guardar cambios en la base de datos
-                return RedirectToAction(nameof(Index)); // Redirigir al índice
+                return RedirectToAction(nameof(Index)); // Vuelve al indice
             }
 
-            return View(usuario); // Si hay errores, regresar a la vista con el modelo
+            return View(usuario); // Si hay errores regresa a la vista con el modelo
         }
 
 
@@ -103,6 +103,16 @@ namespace eCommerce.Controllers
             if (id != usuario.Id)
             {
                 return NotFound();
+            }
+
+            // Verifica si el correo ya existe en la base de datos
+            bool correoExiste = await _context.Usuarios.AnyAsync(u => u.Correo == usuario.Correo);
+
+            if (correoExiste)
+            {
+                // Agregar un mensaje de error al modelo
+                ModelState.AddModelError("Correo", "El correo ingresado ya está registrado.");
+                return View(usuario); // Regresa a la vista con el error
             }
 
             if (ModelState.IsValid)
